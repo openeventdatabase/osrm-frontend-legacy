@@ -1,5 +1,7 @@
 Démo "OnMyWay" pour OpenEventDatabase
 -------------------------------------
+Déployée sur: http://onmyway.openeventdatabase.org/
+
 L'objectif est d'ajouter une recherche des événements à proximité de l'itinéraire calculé par OSRM.
 
 Todo:
