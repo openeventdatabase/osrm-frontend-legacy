@@ -46,13 +46,13 @@ OSRM.DEFAULTS = {
 	JOSM_MIN_ZOOM_LEVEL: 16,
 	NOTES_MIN_ZOOM_LEVEL: 8,
 
-	ONLOAD_ZOOM_LEVEL: 5,
-	ONLOAD_LATITUDE: 48.84,
-	ONLOAD_LONGITUDE: 10.10,
+	ONLOAD_ZOOM_LEVEL: 13,
+	ONLOAD_LATITUDE: 48.86,
+	ONLOAD_LONGITUDE: 2.33,
 	ONLOAD_SOURCE: "",
 	ONLOAD_TARGET: "",
 
-	LANGUAGE: "en",
+	LANGUAGE: "fr",
 	LANGUAGE_USE_BROWSER_SETTING: true,
 	LANUGAGE_ONDEMAND_RELOADING: true,
 	LANGUAGE_SUPPORTED: [
@@ -86,23 +86,23 @@ OSRM.DEFAULTS = {
 	],
 
 	TILE_SERVERS: [
+		{	display_name: 'HOT',
+			url:'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+			attribution:'Map data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors - Events data from OpenEventDatabase',
+			options:{maxZoom: 20}
+		},
+		{	display_name: 'osm-fr',
+			url:'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+			attribution:'Map data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors - Events data from OpenEventDatabase',
+			options:{maxZoom: 20}
+		},
 		{	display_name: 'osm.org',
 			url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-			attribution:'© <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors',
+			attribution:'Map data © <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors - Events data from OpenEventDatabase',
 			options:{maxZoom: 18}
-		},
-		{	display_name: 'osm.de',
-			url:'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png',
-			attribution:'© <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors',
-			options:{maxZoom: 18}
-		},
-		{	display_name: 'MapQuest',
-			url:'http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
-			attribution:'© <a href="http://www.openstreetmap.org/copyright/en">OpenStreetMap</a> contributors, Imagery © <a href="http://www.mapquest.de/">MapQuest</a>',
-			options:{maxZoom: 18, subdomains: '1234'}
 		}
 	],
-
+/*
 	OVERLAY_SERVERS: [
   		{	display_name: 'Small Components',
 			url:'http://tools.geofabrik.de/osmi/tiles/routing_i/{z}/{x}/{y}.png',
@@ -110,6 +110,8 @@ OSRM.DEFAULTS = {
 			options:{}
 		}
 	],
+*/
+OVERLAY_SERVERS: [],
 
 	NOTIFICATIONS: {
 		LOCALIZATION:	1800000,	// 30min
