@@ -1,3 +1,14 @@
+Démo "OnMyWay" pour OpenEventDatabase
+-------------------------------------
+L'objectif est d'ajouter une recherche des événements à proximité de l'itinéraire calculé par OSRM.
+
+Todo:
+* ajouter un champ "heure de départ" ou "heure d'arrivée" pour localiser l'itinéraire dans le temps
+* récupérer la polyline de l'itinéraire et l'utiliser avec le contexte temporel pour interroger OEDB
+* afficher les événements sur la carte
+* afficher le détail des événements (ou à minima un lien vers OEDB pour affichage du GeoJSON)
+
+
 Overview
 --------
 The repository provides a Leaflet [(1)] based web frontend to the Open Source Routing Machine (Project-OSRM [(2)]).
