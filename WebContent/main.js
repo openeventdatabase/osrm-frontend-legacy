@@ -481,16 +481,15 @@ function onEachEventFeature(feature, layer) {
 			popup = feature.properties.what;
 		}
 		if (feature.properties.distance !='0') {
-			popup = popup + ' à '+ feature.properties.distance + 'm';
+			popup = popup + ' (à '+ feature.properties.distance + 'm)';
 		}
     if (feature.properties.when) {
 			popup = '<b>'+popup+'</b><br>le '+feature.properties.when.replace('T',' à ')+'<p>'
 		} else {
-			popup = '<b>'+popup+'</b><br>du '+feature.properties.start.replace('T',' à ')+'<br>au '+ feature.properties.stop.replace('T',' à ')+'<p>'
+			popup = '<h2><a href="http://api.openeventdatabase.org/event/'+feature.properties.id+'" target="_blank">'+popup+'</a></h2>du '+feature.properties.start.replace('T',' à ')+'<br>au '+ feature.properties.stop.replace('T',' à ')+'<p>'
 		}
-		popup += 'Détail sur <a href="http://api.openeventdatabase.org/event/'+feature.properties.id+'" target="_blank">OpenEventDatabase</a>'
 		if (feature.properties.url) {
-			popup = popup+'<br>ou <a href="'+feature.properties.url+'">'+feature.properties.url+'</a>'
+			popup = popup+'<br>Détail sur <a href="'+feature.properties.url+'">'+feature.properties.url+'</a>'
 		}
 		if (feature.properties.source) {
 			popup = popup+'<br><i>Source: '+feature.properties.source+'</i>'
