@@ -447,7 +447,6 @@ OSRM.parseParameters = function(){
 // onload event
 OSRM.Browser.onLoadHandler( OSRM.init );
 
-
 // very bad place to put OpenEventDatabase related code...
 function RouteOEDB(response) {
 	if (document.getElementById('gui-input-date').value == '') {
@@ -484,6 +483,17 @@ function onEachEventFeature(feature, layer) {
 		if (feature.properties.distance !='0') {
 			popup = popup + ' à '+ feature.properties.distance + 'm';
 		}
-
+    if (feature.properties.when) {
+			popup = '<b>'+popup+'</b><br>le '+feature.properties.when.replace('T',' à ')+'<p>'
+		} else {
+			popup = '<b>'+popup+'</b><br>du '+feature.properties.start.replace('T',' à ')+'<br>au '+ feature.properties.stop.replace('T',' à ')+'<p>'
+		}
+		popup += 'Détail sur <a href="http://api.openeventdatabase.org/event/'+feature.properties.id+'" target="_blank">OpenEventDatabase</a>'
+		if (feature.properties.url) {
+			popup = popup+'<br>ou <a href="'+feature.properties.url+'">'+feature.properties.url+'</a>'
+		}
+		if (feature.properties.source) {
+			popup = popup+'<br><i>Source: '+feature.properties.source+'</i>'
+		}
 		layer.bindPopup(popup);
 	}
