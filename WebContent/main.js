@@ -471,13 +471,19 @@ function gotEvents(error, gjson) {
 
 function onEachEventFeature(feature, layer) {
     // does this feature have a property named popupContent?
-    if (feature.properties.label) {
-			layer.bindPopup(feature.properties.label);
+    popup = '';
+		if (feature.properties.label) {
+			popup = feature.properties.label;
 		}
 		else if (feature.properties.name) {
-			layer.bindPopup(feature.properties.label);
+			popup = feature.properties.name;
 		}
 		else {
-			layer.bindPopup(feature.properties.what);
+			popup = feature.properties.what;
 		}
+		if (feature.properties.distance !='0') {
+			popup = popup + ' à '+ feature.properties.distance + 'm';
+		}
+
+		layer.bindPopup(popup);
 	}
