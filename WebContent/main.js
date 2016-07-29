@@ -24,30 +24,30 @@ OSRM.init = function() {
 	if( OSRM.checkOldBrowser() == true )
 		return;
 	OSRM.showHTML();
-	
-	
+
+
 	OSRM.prefetchImages();
 	OSRM.prefetchIcons();
 	OSRM.prefetchCSSIcons();
-	
+
 	OSRM.GUI.init();
 	OSRM.Map.init();
 	OSRM.Printing.init();
 	OSRM.Routing.init();
 	OSRM.RoutingAlternatives.init();
-	OSRM.Localization.init();	
-	
+	OSRM.Localization.init();
+
  	// check if the URL contains some GET parameter, e.g. for showing a route
  	OSRM.parseParameters();
- 	
+
 	// stop if in maintenance mode (after parsing parameters to catch language settings)
 	if( OSRM.GUI.inMaintenance() == true )
-		return; 	
- 
+		return;
+
  	// only init default position / geolocation position if GET parameters do not specify a different one
  	if( OSRM.G.initial_position_override == false )
  		OSRM.Map.initPosition();
- 	
+
  	// finalize initialization of map
  	OSRM.Map.initFinally();
 };
@@ -74,16 +74,16 @@ OSRM.prefetchImages = function() {
 		              	{id:'restore_hover',					url:'images/restore_hover.png'},
 		              	{id:'up',								url:'images/up.png'},
 		              	{id:'up_active',						url:'images/up_active.png'},
-		              	{id:'up_hover',							url:'images/up_hover.png'},		
+		              	{id:'up_hover',							url:'images/up_hover.png'},
 		              	{id:'down',								url:'images/down.png'},
 		              	{id:'down_active',						url:'images/down_active.png'},
 		              	{id:'down_hover',						url:'images/down_hover.png'},
 		              	{id:'config',							url:'images/config.png'},
 		              	{id:'config_active',					url:'images/config_active.png'},
-		              	{id:'config_hover',						url:'images/config_hover.png'},		              	
+		              	{id:'config_hover',						url:'images/config_hover.png'},
 		              	{id:'mapping',							url:'images/mapping.png'},
 		              	{id:'mapping_active',					url:'images/mapping_active.png'},
-		              	{id:'mapping_hover',					url:'images/mapping_hover.png'},		              	
+		              	{id:'mapping_hover',					url:'images/mapping_hover.png'},
 		              	{id:'printer',							url:'images/printer.png'},
 		              	{id:'printer_active',					url:'images/printer_active.png'},
 		              	{id:'printer_hover',					url:'images/printer_hover.png'},
@@ -105,7 +105,7 @@ OSRM.prefetchImages = function() {
 		              	{id:'locations_route_hover',			url:'images/locations_route_hover.png'},
 		              	{id:'locations_route_inactive',			url:'images/locations_route_inactive.png'},
 		              	{id:'layers',							url:'images/layers.png'},
-		        		{id:'direction_0',						url:'images/default.png'},		              	
+		        		{id:'direction_0',						url:'images/default.png'},
 		              	{id:'direction_1',						url:'images/continue.png'},
 		              	{id:'direction_2',						url:'images/slight-right.png'},
 		              	{id:'direction_3',						url:'images/turn-right.png'},
@@ -120,7 +120,7 @@ OSRM.prefetchImages = function() {
 		        		{id:'osrm-logo',						url:'images/osrm-logo.png'},
 		        		{id:'selector',							url:'images/selector.png'}
 	               ];
-		
+
 	for(var i=0; i<image_list.length; i++) {
 		OSRM.G.images[image_list[i].id] = new Image();
 		OSRM.G.images[image_list[i].id].src = image_list[i].url;
@@ -141,7 +141,7 @@ OSRM.prefetchIcons = function() {
 						{id:'marker-highlight-drag',			image_id:'marker-highlight-drag'}
 						//{id:'marker-drag',						image_id:'marker-drag'}				// special treatment because of size
 	              ];
-	
+
 	var LabelMarkerIcon = L.LabelMarkerIcon.extend({
 		options: {
 			shadowUrl: OSRM.G.images["marker-shadow"].getAttribute("src"),
@@ -154,7 +154,7 @@ OSRM.prefetchIcons = function() {
 	for(var i=0; i<icon_list.length; i++) {
 		OSRM.G.icons[icon_list[i].id] = new LabelMarkerIcon({iconUrl: OSRM.G.images[icon_list[i].image_id].getAttribute("src")});
 	}
-	
+
 	// special values for drag marker
 	OSRM.G.icons['marker-drag'] = new L.LabelMarkerIcon( {iconUrl: OSRM.G.images["marker-drag"].getAttribute("src"), iconSize: new L.Point(18, 18) } );
 };
@@ -168,56 +168,56 @@ OSRM.prefetchCSSIcons = function() {
 	                	{ id:'#gui-printer:hover',				image_id:'printer_hover'},
 	                	{ id:'#gui-printer:active',				image_id:'printer_active'},
 
-	                	{ id:'.gui-zoom-in-inactive',			image_id:'zoom_in_inactive'},	                	
+	                	{ id:'.gui-zoom-in-inactive',			image_id:'zoom_in_inactive'},
 	                	{ id:'.gui-zoom-in',					image_id:'zoom_in'},
 	                	{ id:'.gui-zoom-in:hover',				image_id:'zoom_in_hover'},
 	                	{ id:'.gui-zoom-in:active',				image_id:'zoom_in_active'},
 
-	                	{ id:'.gui-zoom-out-inactive',			image_id:'zoom_out_inactive'},	                	
+	                	{ id:'.gui-zoom-out-inactive',			image_id:'zoom_out_inactive'},
 	                	{ id:'.gui-zoom-out',					image_id:'zoom_out'},
 	                	{ id:'.gui-zoom-out:hover',				image_id:'zoom_out_hover'},
 	                	{ id:'.gui-zoom-out:active',			image_id:'zoom_out_active'},
-	                	
+
 	                	{ id:'.gui-locations-user-inactive',	image_id:'locations_user_inactive'},
 	                	{ id:'.gui-locations-user',				image_id:'locations_user'},
 	                	{ id:'.gui-locations-user:hover',		image_id:'locations_user_hover'},
 	                	{ id:'.gui-locations-user:active',		image_id:'locations_user_active'},
-	                	
+
 	                	{ id:'.gui-locations-route-inactive',	image_id:'locations_route_inactive'},
 	                	{ id:'.gui-locations-route',			image_id:'locations_route'},
 	                	{ id:'.gui-locations-route:hover',		image_id:'locations_route_hover'},
 	                	{ id:'.gui-locations-route:active',		image_id:'locations_route_active'},
-	                	
+
 	                	{ id:'.gui-layers',						image_id:'layers'},
-	                	
+
 	                	{ id:'.cancel-marker',					image_id:'cancel'},
 	                	{ id:'.cancel-marker:hover',			image_id:'cancel_hover'},
 	                	{ id:'.cancel-marker:active',			image_id:'cancel_active'},
-	                	
+
 	                	{ id:'.up-marker',						image_id:'up'},
 	                	{ id:'.up-marker:hover',				image_id:'up_hover'},
 	                	{ id:'.up-marker:active',				image_id:'up_active'},
-	                	
+
 	                	{ id:'.down-marker',					image_id:'down'},
 	                	{ id:'.down-marker:hover',				image_id:'down_hover'},
 	                	{ id:'.down-marker:active',				image_id:'down_active'},
-	                	
+
 	                	{ id:'#input-mask-header',				image_id:'osrm-logo'},
 	                	{ id:'.styled-select',					image_id:'selector'},
-	                	
+
 	                	{ id:'#config-handle-icon',				image_id:'config'},
 	                	{ id:'#config-handle-icon:hover',		image_id:'config_hover'},
 	                	{ id:'#config-handle-icon:active',		image_id:'config_active'},
-	                	           	
+
 	                	{ id:'#mapping-handle-icon',			image_id:'mapping'},
 	                	{ id:'#mapping-handle-icon:hover',		image_id:'mapping_hover'},
 	                	{ id:'#mapping-handle-icon:active',		image_id:'mapping_active'},
-	                	          	
+
 	                	{ id:'#main-handle-icon',				image_id:'restore'},
 	                	{ id:'#main-handle-icon:hover',			image_id:'restore_hover'},
-	                	{ id:'#main-handle-icon:active',		image_id:'restore_active'}	                	
+	                	{ id:'#main-handle-icon:active',		image_id:'restore_active'}
 	                ];
-	
+
 	var stylesheet = OSRM.CSS.getStylesheet("main.css");
 	for(var i=0; i<css_list.length; i++) {
 		OSRM.CSS.insert( stylesheet, css_list[i].id, "background-image:url("+ OSRM.G.images[css_list[i].image_id].getAttribute("src") + ");" );
@@ -229,13 +229,13 @@ OSRM.prefetchCSSIcons = function() {
 OSRM.checkOldBrowser = function() {
 	if( OSRM.Browser.IE6_7 == -1 )
 		return false;
-	
+
 	document.getElementById("old-browser-warning").style.display = "block";
 	return true;
 };
 
 
-// only show html content of website, if javascript is active 
+// only show html content of website, if javascript is active
 OSRM.showHTML = function() {
 	document.getElementById("map").style.display = "block";
 	document.getElementById("gui").style.display = "block";
@@ -245,17 +245,17 @@ OSRM.showHTML = function() {
 // parse URL GET parameters
 OSRM.parseParameters = function(){
 	var called_url = document.location.search.substr(1,document.location.search.length);
-	
+
 	// state, if GET parameters specify a different initial position
 	OSRM.G.initial_position_override = false;
-	
+
 	// reject messages that are clearly too long or too small
 	if( called_url.length > 1000 || called_url.length == 0)
 		return;
-	
+
 	// storage for parameter values
 	var params = {};
-	
+
 	// default values for parameters for which using PARAMS_VALUE || DEFAULT_VALUE is not an option (as they can evaluate to 0)
 	params.active_routing_engine = OSRM.DEFAULTS.ROUTING_ENGINE;
 
@@ -265,7 +265,7 @@ OSRM.parseParameters = function(){
 		var name_val = splitted_url[i].split('=');
 		if(name_val.length!=2)
 			continue;
-		
+
 		if(name_val[0] == 'hl') {
 			OSRM.Localization.setLanguage(name_val[1]);
 		}
@@ -274,7 +274,7 @@ OSRM.parseParameters = function(){
 			if(type != 0 && type != 1)
 				return;
 			OSRM.GUI.setDistanceFormat(type);
-		}		
+		}
 //		else if(name_val[0] == 'loc') {
 //			var coordinates = unescape(name_val[1]).split(',');
 //			if(coordinates.length!=2 || !OSRM.Utils.isLatitude(coordinates[0]) || !OSRM.Utils.isLongitude(coordinates[1]) )
@@ -298,7 +298,7 @@ OSRM.parseParameters = function(){
 			params.destinations.push ( decodeURI(name_val[1]).replace(/<\/?[^>]+(>|$)/g ,"") );
 		}
 		else if(name_val[0] == 'destname') {
-			params.destination_name = decodeURI(name_val[1]).replace(/<\/?[^>]+(>|$)/g ,"");	// discard tags	
+			params.destination_name = decodeURI(name_val[1]).replace(/<\/?[^>]+(>|$)/g ,"");	// discard tags
 		}
 		else if(name_val[0] == 'z') {
 			var zoom_level = Number(name_val[1]);
@@ -309,8 +309,8 @@ OSRM.parseParameters = function(){
 		else if(name_val[0] == 'center') {
 			var coordinates = unescape(name_val[1]).split(',');
 			if(coordinates.length!=2 || !OSRM.Utils.isLatitude(coordinates[0]) || !OSRM.Utils.isLongitude(coordinates[1]) )
-				return;				
-			params.center = new L.LatLng( coordinates[0], coordinates[1]);			
+				return;
+			params.center = new L.LatLng( coordinates[0], coordinates[1]);
 		}
 		else if(name_val[0] == 'alt') {
 			var active_alternative = Number(name_val[1]);
@@ -343,21 +343,21 @@ OSRM.parseParameters = function(){
 				OSRM.G.main_handle.$hideBox();
 				OSRM.G.map.zoomControl.show();
 			}
-		}		
+		}
 	}
-	
+
 	// stop if in maintenance mode
 	if( OSRM.GUI.inMaintenance() == true )
 		return;
-	
+
 	// set routing engine
 	OSRM.GUI.setRoutingEngine( params.active_routing_engine );
-	
+
 	// case 1: locations/destinations given (as strings)
 	if( params.locations || params.destinations ) {
 		var locations = params.destinations ? params.destinations : params.locations;
 		var callback = params.destinations ? "_showInitResults_Destinations" : "_showInitResults_Locations";
-		
+
 		OSRM.G.initial_positions = {};
 		var data = OSRM.G.initial_positions;
 		data.positions = [];
@@ -365,35 +365,35 @@ OSRM.parseParameters = function(){
 		data.fail = false;
 		data.zoom = params.zoom;
 		data.center = params.center;
-		data.active_alternative = params.active_alternative;		
+		data.active_alternative = params.active_alternative;
 		//data.engine = params.active_routing_engine;
 		data.name = params.destination_name;
 		for(var id=0; id<locations.length; id++) {
 			// prepare placeholder positions for coordinates
 			// (have to prepared before starting geocoder!)
 			data.positions.push( new L.LatLng(0,0) );
-		}		
+		}
 		for(var id=0; id<locations.length; id++) {
 			// geo coordinates given -> directly incorporate results
-			var query = locations[id]; 
+			var query = locations[id];
 			if(query.match(/^\s*[-+]?[0-9]*\.?[0-9]+\s*[,;]\s*[-+]?[0-9]*\.?[0-9]+\s*$/)){
 				var coord = query.split(/[,;]/);
 				OSRM.Geocoder._showInitResults( [{lat:coord[0],lon:coord[1]} ], {id:id,callback:callback} );
 			} else {
-				OSRM.GUI.exclusiveNotify( OSRM.loc("NOTIFICATION_GEOCODERWAIT_HEADER"), OSRM.loc("NOTIFICATION_GEOCODERWAIT_BODY"), false );				
+				OSRM.GUI.exclusiveNotify( OSRM.loc("NOTIFICATION_GEOCODERWAIT_HEADER"), OSRM.loc("NOTIFICATION_GEOCODERWAIT_BODY"), false );
 				var call = OSRM.DEFAULTS.HOST_GEOCODER_URL + "?format=json&json_callback=%jsonp" + OSRM.DEFAULTS.GEOCODER_BOUNDS + "&accept-language="+OSRM.Localization.current_language+"&limit=1&q=" + query;
 				OSRM.JSONP.call( call, OSRM.Geocoder._showInitResults, OSRM.Geocoder._showInitResults, OSRM.DEFAULTS.JSONP_TIMEOUT, "init_geocoder_"+id, {id:id,callback:callback} );
 			}
 		}
 		return;
 	}
-		
+
 //	// case 1: destination given
 //	if( params.destinations ) {
 //		var index = OSRM.G.markers.setTarget( params.destinations[params.destinations.length-1] );
 //		if( params.destination_name )
 //			OSRM.G.markers.route[index].description = params.destination_name;	// name in GUI will be set when languages are loaded
-//		else 
+//		else
 //			OSRM.Geocoder.updateAddress( OSRM.C.TARGET_LABEL, OSRM.C.DO_FALLBACK_TO_LAT_LNG );
 //		OSRM.G.markers.route[index].show();
 //		OSRM.G.markers.route[index].centerView( params.zoom );
@@ -418,7 +418,7 @@ OSRM.parseParameters = function(){
 //			OSRM.G.markers.setVia( i-1, params.positions[i] );
 //		for(var i=0; i<OSRM.G.markers.route.length;i++)
 //			OSRM.G.markers.route[i].show();
-//		
+//
 //		// center on route (support for old links) / move to given view (new behaviour)
 //		if( params.zoom == null || params.center == null ) {
 //			var bounds = new L.LatLngBounds( params.positions );
@@ -426,23 +426,58 @@ OSRM.parseParameters = function(){
 //		} else {
 //			OSRM.G.map.setView(params.center, params.zoom);
 //		}
-//		
+//
 //		// set active alternative (if via points are set or alternative does not exists, fallback to shortest route)
 //		OSRM.G.active_alternative = params.active_alternative || 0;
-//		
+//
 //		// set routing server
 //		OSRM.GUI.setRoutingEngine( params.active_routing_engine );
-//			
+//
 //		// compute route
 //		OSRM.Routing.getRoute({keepAlternative:true});
 //		OSRM.G.initial_position_override = true;
 //		return;
 //	}
-	
-	// default case: do nothing	
+
+	// default case: do nothing
 	return;
 };
 
 
 // onload event
 OSRM.Browser.onLoadHandler( OSRM.init );
+
+
+// very bad place to put OpenEventDatabase related code...
+function RouteOEDB(response) {
+	if (document.getElementById('gui-input-date').value == '') {
+		url = 'http://api.openeventdatabase.org/event?when=TODAY'
+	}
+	else
+	{
+		start = document.getElementById('gui-input-date').value
+	  stop = Number(start)+1
+	  url = 'http://api.openeventdatabase.org/event?start='+start+'&stop='+stop
+	}
+	url = url +'&polyline='+response.route_geometry
+	queue()
+	    .defer(d3.json, url)
+			.await(gotEvents);
+}
+
+function gotEvents(error, gjson) {
+	L.geoJson(gjson, { onEachFeature: onEachEventFeature }).addTo(OSRM.G.map);
+}
+
+function onEachEventFeature(feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties.label) {
+			layer.bindPopup(feature.properties.label);
+		}
+		else if (feature.properties.name) {
+			layer.bindPopup(feature.properties.label);
+		}
+		else {
+			layer.bindPopup(feature.properties.what);
+		}
+	}

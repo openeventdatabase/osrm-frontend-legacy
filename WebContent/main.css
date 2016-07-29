@@ -40,7 +40,7 @@ html, body
 .leaflet-container {
 	cursor: default;
 }
-	
+
 .via-counter
 {
 	position:absolute;
@@ -52,7 +52,7 @@ html, body
 	-webkit-border-radius:5px;
 	background-color:#FFFFFF;
 	text-align:center;
-	vertical-align:middle;	
+	vertical-align:middle;
 	font-size:9px;
 	display:none;
 }
@@ -89,26 +89,26 @@ html, body
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	background-color:rgba(0, 0, 0, 0.25);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3f000000, endColorstr=#3f000000);	
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#3f000000, endColorstr=#3f000000);
 }
 .box-animated
-{	
+{
 	transition:left 1s, right 1s;
 	-moz-transition:left 1s,right 1s;
 	-webkit-transition:left 1s,right 1s;
 	-o-transition:left 1s,right 1s;
-	-ms-transition:left 1s,right 1s;	
+	-ms-transition:left 1s,right 1s;
 }
 .box-content
 {
 	position:absolute;
-	background-color:#ffffff;	
+	background-color:#ffffff;
 	background-color:rgba(255,255,255,1);
 	border-radius:8px;
 	-moz-border-radius:8px;
-	-webkit-border-radius:8px;	
+	-webkit-border-radius:8px;
 	margin:5px;
-	padding:5px;	
+	padding:5px;
 }
 .box-handle-wrapper-right
 {
@@ -130,7 +130,7 @@ html, body
 	-moz-border-radius-topright:0px;
 	-moz-border-radius-bottomright:0px;
 	-webkit-border-top-right-radius:0px;
-	-webkit-border-bottom-right-radius:0px;	
+	-webkit-border-bottom-right-radius:0px;
 }
 .box-handle-wrapper-left
 {
@@ -152,7 +152,7 @@ html, body
 	-moz-border-radius-topleft:0px;
 	-moz-border-radius-bottomleft:0px;
 	-webkit-border-top-left-radius:0px;
-	-webkit-border-bottom-left-radius:0px;	
+	-webkit-border-bottom-left-radius:0px;
 }
 
 
@@ -181,7 +181,7 @@ html, body
 #main-input
 {
 	width:390px;
-	height:140px;
+	height:160px;
 }
 #main-output
 {
@@ -231,7 +231,7 @@ html, body
 {
 	margin:0px 2px 0px 0px;
 }
-.input-delete 
+.input-delete
 {
 	margin:0px 15px 0px 8px;
  	visibility:hidden;
@@ -468,7 +468,7 @@ html, body
 #mapping-content
 {
 	width:390px;
-	height:80px;	
+	height:80px;
 }
 #config-wrapper
 {
@@ -480,7 +480,7 @@ html, body
 #config-content
 {
 	width:390px;
-	height:80px;	
+	height:80px;
 }
 #exclusive-notification-wrapper
 {
@@ -516,7 +516,7 @@ html, body
 	left: 50%;
 	margin-left:-350px;
 	z-index:98;
-	display: none;	
+	display: none;
 }
 #tooltip-notification-content
 {
@@ -561,10 +561,10 @@ html, body
 #mapping-checkboxes input
 {
 	cursor:pointer;
-	position: relative;	
+	position: relative;
 	margin: 0px 5px 5px 5px;
 	padding: 0px;
-    top: 3px;    
+    top: 3px;
 }
 #mapping-checkboxes label
 {
@@ -596,14 +596,14 @@ html, body
 .gui-control
 {
 	cursor:pointer;
-	position:relative;	
+	position:relative;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	display: block;
 }
 .gui-control-inactive {
 	cursor:default;
-	position:relative;	
+	position:relative;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	display: block;
@@ -617,7 +617,7 @@ html, body
 .gui-zoom-out-inactive
 {
 	width: 15px;
-	height: 15px;	
+	height: 15px;
 }
 .leaflet-touch .gui-zoom-in,
 .leaflet-touch .gui-zoom-out,
@@ -637,7 +637,7 @@ html, body
 {
 	float:left;
 	width: 26px;
-	height: 26px;	
+	height: 26px;
 }
 .leaflet-touch .gui-locations-user,
 .leaflet-touch .gui-locations-route,
@@ -653,12 +653,12 @@ html, body
 .gui-layers
 {
 	width: 26px;
-	height: 26px;	
+	height: 26px;
 }
 .leaflet-touch .gui-layers
 {
 	width: 32px;
-	height: 32px;	
+	height: 32px;
 }
 .gui-layers-expanded .gui-layers
 {
@@ -679,11 +679,11 @@ html, body
 	cursor:pointer;
 	margin-top: 2px;
 	position: relative;
-    top: 2px;    
+    top: 2px;
 }
 .gui-layers-list label
 {
-	cursor:pointer;	
+	cursor:pointer;
 	display: block;
     vertical-align:middle;
 }
@@ -712,7 +712,7 @@ html, body
 	font-size:9px;
 	outline-style:none;
 	vertical-align:1px;
-	white-space: nowrap;  
+	white-space: nowrap;
 }
 .button:hover
 {
@@ -737,7 +737,7 @@ html, body
 	text-decoration:none;
 	font-size:9px;
 	outline-style:none;
-	vertical-align:1px;	
+	vertical-align:1px;
 	white-space: nowrap;
 }
 .button-pressed
@@ -753,7 +753,7 @@ html, body
 	text-decoration:none;
 	font-size:9px;
 	outline-style:none;
-	vertical-align:1px;  
+	vertical-align:1px;
 	white-space: nowrap;
 }
 
@@ -789,7 +789,7 @@ html, body
 {
 	text-align:left;
 	position:absolute;
-	background-repeat:no-repeat;	
+	background-repeat:no-repeat;
 	background-position: top right;
 	padding: 1px 1px 1px 1px;
 	overflow: hidden;
@@ -866,7 +866,7 @@ html, body
 {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 14px;
-	font-weight: bold;	
+	font-weight: bold;
 }
 .medium-font
 {
