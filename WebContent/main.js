@@ -458,7 +458,7 @@ function RouteOEDB(response) {
 	  stop = Number(start)+1
 	  url = 'http://api.openeventdatabase.org/event?start='+start+'&stop='+stop
 	}
-	url = url +'&polyline='+response.route_geometry
+	url = url +'&polyline_precision=6&polyline='+response.route_geometry
 	queue()
 	    .defer(d3.json, url)
 			.await(gotEvents);
